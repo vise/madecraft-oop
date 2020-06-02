@@ -3,10 +3,24 @@ package exercises;
 public class Smurf {
 
 	private String name;
+	private static Smurf papaSmurf = null;
 
 	public static Smurf createSmurf(String name) {
-		System.out.println("Creating " + name + " Smurf");
-		return new Smurf(name);
+		if(name == "papa"){
+			if(papaSmurf == null){
+				papaSmurf = new Smurf(name);
+				System.out.println("Creating " + name + " Smurf");
+				return papaSmurf;
+			}
+			else{
+				System.out.println("Only one papa allowed");
+				return null;
+			}
+		}
+		else{	
+			System.out.println("Creating " + name +  " Smurf");
+			return new Smurf(name);
+		}
 	}
 
 	private Smurf(String name) {
